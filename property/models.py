@@ -6,7 +6,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 class Flat(models.Model):
     new_building = models.BooleanField(
-        verbose_name='Новостройка'
+        verbose_name='Новостройка',
         blank=True,
         null=True
     )
@@ -66,11 +66,14 @@ class Flat(models.Model):
 class Complaint(models.Model):
     author = models.ForeignKey(
         User, 
+        related_name='complaints',
         on_delete=models.CASCADE, 
         verbose_name="Кто жаловался"
     )
     flat = models.ForeignKey(
-        Flat, on_delete=models.CASCADE, 
+        Flat, 
+        on_delete=models.CASCADE, 
+        related_name='complaints',
         verbose_name="Квартира, на которую пожаловались"
     )
     complaint = models.TextField(verbose_name="Текст жалобы")
