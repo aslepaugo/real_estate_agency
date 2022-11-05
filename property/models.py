@@ -6,6 +6,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 class Flat(models.Model):
     new_building = models.BooleanField(
+        verbose_name='Новостройка'
         blank=True,
         null=True
     )
